@@ -1,5 +1,6 @@
 <template>
-    <table>
+    <pre-loader v-if="!posts.length"/>
+    <table v-else>
       <tr>
         <th><h1>ID<arrow-elem /></h1></th>
         <th><h1>Заголовок<arrow-elem /></h1></th>
@@ -15,11 +16,13 @@
 
 <script>
 import ArrowElem from '../components/svgElements/ArrowElem'
+import PreLoader from './svgElements/PreLoader.vue'
 
 export default {
   name: 'MainTable',
   components: {
-    ArrowElem
+    ArrowElem,
+    PreLoader
   },
   data(){
     return {
