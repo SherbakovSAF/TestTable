@@ -80,6 +80,7 @@ export default {
 <style scoped lang="scss">
 @import '../assets/main.scss';
 table{
+  margin: 15px 0px;
   border-collapse: collapse;
   tr {
     
