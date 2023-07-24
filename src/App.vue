@@ -1,19 +1,43 @@
 <template>
   <div class="container">
     <MainSearch />
-    <MainTable />
+    <MainTable 
+      @amountElem="setAmountPosts" 
+      :selectedPage="page"
+      :amountItemForPage="amountItemForPage"/>
+    <pagination-panel 
+    :postsLength="amountPosts" 
+    @selectedPage="setSelectedPage"
+    :amountItemForPage="amountItemForPage"/>
   </div>
 </template>
 
 <script>
 import MainSearch from './components/MainSearch.vue'
 import MainTable from './components/MainTable.vue';
+import PaginationPanel from './components/PaginationPanel.vue';
 
 export default {
   name: 'App',
   components: {
     MainSearch,
-    MainTable
+    MainTable,
+    PaginationPanel
+  },
+  data(){
+    return {
+      amountPosts: null,
+      page: 1,
+      amountItemForPage: 10
+    }
+  },
+  methods: {
+    setAmountPosts(posts){
+      this.amountPosts = posts
+    },
+    setSelectedPage(page){
+      this.page = page
+    }
   }
 }
 </script>
