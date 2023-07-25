@@ -82,9 +82,11 @@ export default {
     },
   },
   async mounted(){
+    this.$emit('isPreloared', true)
     const res = await fetch('https://jsonplaceholder.typicode.com/posts')
     const newArray = await res.json()
     this.posts = [...newArray]
+    this.$emit('isPreloared', false)
   },
   watch: {
     filterPostsSearch(){

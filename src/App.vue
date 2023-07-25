@@ -1,20 +1,20 @@
 <template>
   <div class="container">
-    <MainSearch v-model="searchViaTitle"/>
+    <MainSearch v-model="searchViaTitle" />
+    <pre-loader v-show="isPreloared"/>
     <div v-show="amountPosts > 0">
       <MainTable 
-      @amountElem="setAmountPosts" 
-      :selectedPage="page"
-      :amountItemForPage="amountItemForPage"
-      :filterTitle="searchViaTitle"
-    />
-    <pagination-panel
-      :postsLength="amountPosts" 
-      @selectedPage="setSelectedPage"
-      :amountItemForPage="amountItemForPage"
-    />
+        @amountElem="setAmountPosts"
+        @isPreloared="setStatusPreloader" 
+        :selectedPage="page" 
+        :amountItemForPage="amountItemForPage"
+        :filterTitle="searchViaTitle" />
+      <pagination-panel @selectedPage="setSelectedPage"
+        :postsLength="amountPosts" 
+        :amountItemForPage="amountItemForPage" />
     </div>
-    <date-null  v-show="amountPosts < 1"/>
+    
+    <date-null v-show="amountPosts < 1 && isPreloared == false" />
     <!-- Какая то проблема с Vue, почему v-if и v-else не работает корректно -->
   </div>
 </template>
@@ -24,6 +24,7 @@ import MainSearch from './components/MainSearch.vue'
 import MainTable from './components/MainTable.vue';
 import PaginationPanel from './components/PaginationPanel.vue';
 import DateNull from './components/DateNull.vue'
+import PreLoader from './components/svgElements/PreLoader.vue';
 
 export default {
   name: 'App',
@@ -32,6 +33,7 @@ export default {
     MainTable,
     PaginationPanel,
     DateNull,
+    PreLoader
   },
   data(){
     return {
@@ -39,6 +41,7 @@ export default {
       page: 1,
       amountItemForPage: 10,
       searchViaTitle: '',
+      isPreloared: false,
     }
   },
   methods: {
@@ -47,6 +50,9 @@ export default {
     },
     setSelectedPage(page){
       this.page = page
+    },
+    setStatusPreloader(status){
+      this.isPreloared = status
     }
   }
 }
