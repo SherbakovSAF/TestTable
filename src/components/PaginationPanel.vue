@@ -9,7 +9,7 @@
         {{ page }}
       </button>
     </div>
-    <button id="nextBtn" @click="selectPage++" :disabled="selectPage >= 10">Вперёд</button>
+    <button id="nextBtn" @click="selectPage++" :disabled="selectPage >= postsLength / amountItemForPage">Вперёд</button>
   </div>
 </template>
 
@@ -39,7 +39,8 @@ export default {
   computed: {
     calPage() {
       let localArray = []
-      for(let i = 1; i <= this.postsLength / this.amountItemForPage; i++){
+      const currentPage = Math.ceil(this.postsLength / this.amountItemForPage)
+      for(let i = 1; i <= currentPage; i++){
         localArray.push(i)
       }
       return localArray
@@ -60,8 +61,6 @@ export default {
   justify-content: space-between;
   display: grid;
   grid-template-columns: repeat(3, auto);
-
-
 
   .page__wrap {
     button {
@@ -89,6 +88,7 @@ export default {
 
   #prevBtn, #nextBtn {
     padding: 0px 45px;
+    font-weight: 500;
   }
 }
 </style>
