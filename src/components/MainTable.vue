@@ -1,5 +1,6 @@
 <template>
-    <pre-loader v-if="!posts.length"/>
+    <div>
+      <pre-loader v-if="!posts.length"/>
     
     <table v-else>
       <tr>
@@ -13,6 +14,7 @@
         <td>{{ array.body }}</td>
       </tr>
     </table>
+    </div>
     
 </template>
 

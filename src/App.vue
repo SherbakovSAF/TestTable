@@ -1,15 +1,21 @@
 <template>
   <div class="container">
     <MainSearch v-model="searchViaTitle"/>
-    <MainTable 
+    <div v-show="amountPosts > 0">
+      <MainTable 
       @amountElem="setAmountPosts" 
       :selectedPage="page"
       :amountItemForPage="amountItemForPage"
-      :filterTitle="searchViaTitle"/>
+      :filterTitle="searchViaTitle"
+    />
     <pagination-panel 
-    :postsLength="amountPosts" 
-    @selectedPage="setSelectedPage"
-    :amountItemForPage="amountItemForPage"/>
+      :postsLength="amountPosts" 
+      @selectedPage="setSelectedPage"
+      :amountItemForPage="amountItemForPage"
+    />
+    </div>
+    <date-null  v-show="amountPosts < 1"/>
+    <!-- Какая то проблема с Vue, почему v-if и v-else не работает корректно -->
   </div>
 </template>
 
@@ -17,13 +23,15 @@
 import MainSearch from './components/MainSearch.vue'
 import MainTable from './components/MainTable.vue';
 import PaginationPanel from './components/PaginationPanel.vue';
+import DateNull from './components/DateNull.vue'
 
 export default {
   name: 'App',
   components: {
     MainSearch,
     MainTable,
-    PaginationPanel
+    PaginationPanel,
+    DateNull,
   },
   data(){
     return {
