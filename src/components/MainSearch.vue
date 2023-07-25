@@ -1,7 +1,7 @@
 <template>
   <div class="main__search">
     <div>
-      <input type="text" placeholder="Поиск">
+      <input type="text" placeholder="Поиск" :value="modelValue" @input="$emit('update:modelValue', $event.target.value)">
       <search-elem />
     </div>
   </div>
@@ -13,7 +13,11 @@ export default {
   name: 'MainSearch',
   components: {
     SearchElem
-  }
+  },
+  props: {
+    modelValue: String 
+  },
+  emits: ['update:modelValue']
 }
 </script>
 

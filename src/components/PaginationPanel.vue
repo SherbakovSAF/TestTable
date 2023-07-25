@@ -76,6 +76,7 @@ export default {
     user-select: none;
     width: auto;
     color: $mainColor;
+    transition: all ease-in-out 0.2s;
   }
 
   .activePage{
@@ -89,6 +90,9 @@ export default {
   #prevBtn, #nextBtn {
     padding: 0px 45px;
     font-weight: 500;
+    &:active {
+      transform: scale(1.2);
+    }
   }
 }
 </style>
