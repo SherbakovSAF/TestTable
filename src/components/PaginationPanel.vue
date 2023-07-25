@@ -95,4 +95,6 @@ export default {
     }
   }
 }
+
+@import '../assets/mainMedia';
 </style>

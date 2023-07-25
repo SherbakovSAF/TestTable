@@ -25,7 +25,6 @@ export default {
 .main__search {
   background-color: #5A5C66;
   width: 630px;
-
   div {
     display: flex;
     align-items: center;
@@ -43,8 +42,7 @@ export default {
       }
     }
   }
-  
 }
 
-
+@import '../assets/mainMedia';
 </style>

@@ -141,4 +141,5 @@ table{
     }
   }
 }
+@import '../assets/mainMedia';
 </style>

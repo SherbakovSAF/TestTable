@@ -8,7 +8,7 @@
       :amountItemForPage="amountItemForPage"
       :filterTitle="searchViaTitle"
     />
-    <pagination-panel 
+    <pagination-panel
       :postsLength="amountPosts" 
       @selectedPage="setSelectedPage"
       :amountItemForPage="amountItemForPage"
