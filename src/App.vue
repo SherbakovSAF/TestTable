@@ -1,10 +1,11 @@
 <template>
   <div class="container">
-    <MainSearch />
+    <MainSearch v-model="searchViaTitle"/>
     <MainTable 
       @amountElem="setAmountPosts" 
       :selectedPage="page"
-      :amountItemForPage="amountItemForPage"/>
+      :amountItemForPage="amountItemForPage"
+      :filterTitle="searchViaTitle"/>
     <pagination-panel 
     :postsLength="amountPosts" 
     @selectedPage="setSelectedPage"
@@ -28,7 +29,8 @@ export default {
     return {
       amountPosts: null,
       page: 1,
-      amountItemForPage: 10
+      amountItemForPage: 10,
+      searchViaTitle: '',
     }
   },
   methods: {

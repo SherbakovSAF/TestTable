@@ -7,12 +7,13 @@
         <th><h1>Заголовок<arrow-elem /></h1></th>
         <th><h1>Описание<arrow-elem /></h1></th>
       </tr>
-      <tr v-for="array in filterPostsArray" :key="array.id">
+      <tr v-for="array in filterPostsPagination" :key="array.id">
         <td>{{ array.id }}</td>
         <td>{{ array.title }}</td>
         <td>{{ array.body }}</td>
       </tr>
     </table>
+    
 </template>
 
 <script>
@@ -33,6 +34,10 @@ export default {
     amountItemForPage: {
       type: Number,
       required: true
+    },
+    filterTitle: {
+      type: String,
+      required: false,
     }
   },
   data(){
@@ -41,15 +46,24 @@ export default {
     }
   },
   computed: {
-    filterPostsArray(){
-      return this.posts.slice(this.selectedPage * this.amountItemForPage - this.amountItemForPage, this.selectedPage * this.amountItemForPage)
+    filterPostsPagination(){
+      return this.filterPostsSearch.slice(this.selectedPage * this.amountItemForPage - this.amountItemForPage, this.selectedPage * this.amountItemForPage)
+    },
+    filterPostsSearch(){
+      return this.posts
+        .filter(e=> e.title.toLowerCase()
+        .includes(this.filterTitle.toLowerCase()))
     }
   },
   async mounted(){
     const res = await fetch('https://jsonplaceholder.typicode.com/posts')
     const newArray = await res.json()
     this.posts = [...newArray]
-    this.$emit('amountElem', this.posts.length)
+  },
+  watch: {
+    filterPostsSearch(){
+      this.$emit('amountElem', this.filterPostsSearch.length)
+    }
   }
 }
 </script>
