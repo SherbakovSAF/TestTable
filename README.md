@@ -1,24 +1,25 @@
-# test-table
+# ☁️ Таблица данных
 
-## Project setup
-```
-npm install
-```
+### ⏲️ Тестовое задание
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+#### Суть проекта
+Вёрстка через таблицу. Получение данных из API. Наверное это основа всех тестовых
 
-### Compiles and minifies for production
-```
-npm run build
-```
+#### Возможности проекта
+- Получени данных через API
+- Проект разделён на компоненты. 
+- Вёрстка через таблицу, а не через Grid
+- Фильтрация
+- Сортировка
+- Различные прелоудеры и т.д
 
-### Lints and fixes files
-```
-npm run lint
-```
+#### Как проверить?
+- Скачать репозиторий
+- Открыть терминал в скаченной директории
+- Написать ```npm i``` и дождаться скачивание всех модулей
+- Если Вы хотите использовать не на сервере, то в файле vue.config.js добавьте строчку ```publicPath: './'``` под строкой ```transpileDependencies: true```
+- Открыть терминал в скаченной директории
+- Написать ```npm run build``` и дождаться сборку проекта
+- Открыть папку dist и запустить файл index.html
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
